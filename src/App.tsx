@@ -27,7 +27,7 @@ function MyApp() {
           <span>
             <pre>token.colorBgLayout</pre>
           </span>
-          should be dark but it does not change. How to fix this?
+          should be dark but it does not change.
         </h1>
       </App>
     </ConfigProvider>
