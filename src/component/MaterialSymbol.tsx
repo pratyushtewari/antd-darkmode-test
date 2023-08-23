@@ -6,20 +6,9 @@ const MaterialSymbol = (props:
       style={{
         fontFamily: "Material Symbols Outlined",
         color: "inherit",
-        textAlign: "center",
         verticalAlign: " -0.125em",
-        textRendering: "optimizeLegibility",
-        fontWeight: "normal",
-        fontStyle: "normal",
         lineHeight: "1",
-        letterSpacing: "normal",
-        textTransform: "none",
-        display: "inline-block",
-        whiteSpace: "nowrap",
-        wordWrap: "normal",
-        direction: "ltr",
-        WebkitFontSmoothing: "antialiased",
-        fontVariationSettings: '"FILL" 0, "wght" 300, "GRAD" 0, "opsz" 48',
+        fontVariationSettings: "'FILL' 0,'wght' 200,'GRAD' -25,'opsz' 24'",
       }}
     >
       {props.name}

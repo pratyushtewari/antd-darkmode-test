@@ -1,9 +1,66 @@
-import { App, Button, Card, ConfigProvider, theme } from "antd";
+import { App, Button, Card, ConfigProvider, Space, theme } from "antd";
 import MaterialSymbol from "./component/MaterialSymbol";
-const { useToken } = theme;
+
+// Sub page
+const MyPage = () => {
+  const { token } = theme.useToken();
+  // const { dd as token  } = theme.useToken();
+  return (
+    <App>
+      <div
+        style={{
+          color: token.colorText,
+          background: token.colorBgLayout,
+          border: "2px solid green",
+        }}
+      >
+        <Card>
+          <p>this is a card</p>
+          <Button type="primary" icon={<MaterialSymbol name="psychiatry" />}>
+            psychiatry
+          </Button>
+        </Card>
+        <h1 style={{ color: token.colorWarningText }}>
+          The backgroundColor of this div which is set to
+          <span>
+            <pre>token.colorBgLayout</pre>
+          </span>
+          should be dark in dark mode.
+        </h1>
+        <h1> Now lets override it using a nested ConfigProvider</h1>
+      </div>
+      <ConfigProvider
+        theme={{
+          algorithm: theme.defaultAlgorithm,
+        }}
+      >
+        <div
+          style={{
+            color: token.colorText,
+            background: token.colorBgLayout,
+            border: "2px solid red",
+          }}
+        >
+          <Card>
+            <p>this is a card</p>
+            <Button type="primary" icon={<MaterialSymbol name="psychiatry" />}>
+              psychiatry
+            </Button>
+          </Card>
+          <h1 style={{ color: token.colorWarningText }}>
+            The backgroundColor of this div which is set to
+            <span>
+              <pre>token.colorBgLayout</pre>
+            </span>
+            should be light and in light mode.
+          </h1>
+        </div>
+      </ConfigProvider>
+    </App>
+  );
+};
 
 function MyApp() {
-  const { token } = useToken();
   return (
     <ConfigProvider
       theme={{
@@ -16,20 +73,7 @@ function MyApp() {
         algorithm: theme.darkAlgorithm,
       }}
     >
-      <App style={{ backgroundColor: token.colorBgLayout, height: 500 }}>
-        <Card>
-          <Button type="primary" icon={<MaterialSymbol name="psychiatry" />}>
-            Face Icon button
-          </Button>
-        </Card>
-        <h1 style={{ color: token.colorWarningText }}>
-          The backgroundColor of this div which is set to{" "}
-          <span>
-            <pre>token.colorBgLayout</pre>
-          </span>
-          should be dark but it does not change.
-        </h1>
-      </App>
+      <MyPage />
     </ConfigProvider>
   );
 }
