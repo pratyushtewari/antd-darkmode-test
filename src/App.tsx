@@ -29,9 +29,16 @@ const MyPage = () => {
             psychiatry
           </Button>
         </Card>
-        <h3> Now lets override it using a nested ConfigProvider</h3>
       </div>
-      <br></br>
+      <h3
+        style={{
+          color: token.colorErrorText,
+        }}
+      >
+        {" "}
+        Now lets override it using a nested ConfigProvider
+      </h3>
+
       <ConfigProvider
         theme={{
           algorithm: theme.defaultAlgorithm,
