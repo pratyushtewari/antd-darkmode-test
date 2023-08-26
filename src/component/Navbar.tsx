@@ -1,9 +1,10 @@
 import MaterialSymbol from "./MaterialSymbol";
-
+import bbosLogo from "../assets/BBS_logo_small.svg";
 import React, { useState } from "react";
 // import { AppstoreOutlined, MailOutlined, SettingOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
-import { Menu } from "antd";
+import { Menu, Space } from "antd";
+import { theme } from "antd";
 
 const items: MenuProps["items"] = [
   {
@@ -94,13 +95,41 @@ const items: MenuProps["items"] = [
 
 const Navbar: React.FC = () => {
   const [current, setCurrent] = useState("home");
-
+  const { token } = theme.useToken();
   const onClick: MenuProps["onClick"] = (e) => {
     console.log("click ", e);
     setCurrent(e.key);
   };
 
-  return <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />;
+  return (
+    <div
+      style={{
+        // width: "100%",
+        paddingInline: token.sizeXS,
+        background: token.colorBgContainer,
+        borderColor: token.colorBorder,
+        borderBottomWidth: 1,
+        borderStyle: "solid",
+      }}
+    >
+      <Space align="center">
+        <img src={bbosLogo}></img>
+        <span
+          style={{
+            color: token.colorPrimary,
+            /* Light/LG/LG Strong */
+            fontSize: 16,
+            fontWeight: 600,
+            lineHeight: "24px",
+            whiteSpace: "nowrap",
+          }}
+        >
+          Blue Book Services
+        </span>
+        <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />
+      </Space>
+    </div>
+  );
 };
 
 export default Navbar;

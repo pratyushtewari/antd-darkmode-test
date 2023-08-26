@@ -1,4 +1,4 @@
-import { App, Layout, theme } from "antd";
+import { App, Layout } from "antd";
 import { ThemeProvider } from "antd-style";
 import CompanySearchContent from "./component/CompanySearchContent";
 import CompanySearchSidebar from "./component/CompanySearchSidebar";
@@ -6,7 +6,7 @@ import Navbar from "./component/Navbar";
 
 const { Header, Content, Sider } = Layout;
 function MyApp() {
-  const { token } = theme.useToken();
+  // const { token } = theme.useToken();
   return (
     <ThemeProvider
       themeMode={"auto"}
@@ -49,12 +49,9 @@ function MyApp() {
           <Header
             style={{
               padding: 0,
+              marginBottom: 1,
               height: 46,
               lineHeight: "46px",
-              background: "initial",
-              borderColor: token.colorBorder,
-              borderWidth: 0,
-              borderBottomWidth: 0,
             }}
           >
             <Navbar />
