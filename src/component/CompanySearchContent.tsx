@@ -5,10 +5,10 @@ function CompanySearchContent() {
   return (
     <div
       style={{
-        width: "inherit",
         height: "100%",
         background: token.colorBgLayout,
         color: token.colorText,
+        padding: token.size,
       }}
     >
       sdfd asdfasd fsad fas

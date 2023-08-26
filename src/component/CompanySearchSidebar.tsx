@@ -5,10 +5,13 @@ function CompanySearchSidebar() {
   return (
     <div
       style={{
-        width: "inherit",
         height: "inherit",
         background: token.colorBgBase,
         color: token.colorText,
+        borderColor: token.colorBorder,
+        borderRightWidth: 1,
+        borderStyle: "solid",
+        padding: token.size
       }}
     >
       sdfd asdfasd fsad fas

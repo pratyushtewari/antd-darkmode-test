@@ -84,7 +84,7 @@ const items: MenuProps["items"] = [
   },
   {
     label: (
-      <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
+      <a href="#" target="_blank" rel="noopener noreferrer">
         Navigation Four - Link
       </a>
     ),
@@ -93,7 +93,7 @@ const items: MenuProps["items"] = [
 ];
 
 const Navbar: React.FC = () => {
-  const [current, setCurrent] = useState("mail");
+  const [current, setCurrent] = useState("home");
 
   const onClick: MenuProps["onClick"] = (e) => {
     console.log("click ", e);
