@@ -113,7 +113,14 @@ const Navbar: React.FC = () => {
       }}
     >
       <Space align="center">
-        <img src={bbosLogo}></img>
+        <img
+          style={{
+            height: 24,
+            width: 24,
+            verticalAlign: "text-top",
+          }}
+          src={bbosLogo}
+        ></img>
         <span
           style={{
             color: token.colorPrimary,
