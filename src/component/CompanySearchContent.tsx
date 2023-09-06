@@ -1,10 +1,12 @@
-import { theme, Collapse, Checkbox, Select } from "antd";
+import { theme, Collapse, Checkbox, Select, Descriptions } from "antd";
 import type { CheckboxChangeEvent } from "antd/es/checkbox";
 import { Col, Row } from "antd";
 
 const { Panel } = Collapse;
 import { Button, Form, Input, Radio } from "antd";
 import { useState } from "react";
+import FormItemLabel from "antd/es/form/FormItemLabel";
+import FormItem from "antd/es/form/FormItem";
 type LayoutType = Parameters<typeof Form>[0]["layout"];
 const text = `
 A dog is a type of domesticated animal.
@@ -39,13 +41,28 @@ function CompanySearchContent() {
   const formItemLayout = formLayout === "horizontal" ? { labelCol: { span: 4 }, wrapperCol: { span: 14 } } : null;
 
   const buttonItemLayout = formLayout === "horizontal" ? { wrapperCol: { span: 14, offset: 4 } } : null;
-  const headerContent = (title: string, subtitle: string) => {
+
+  const Microcopy = ({ text }: { text: string }) => {
+    return (
+      <div
+        style={{
+          color: token.colorTextDescription,
+          fontSize: token.fontSizeSM,
+        }}
+      >
+        {text}
+      </div>
+    );
+  };
+
+  const HeaderContent = (title: string, subtitle: string) => {
     return (
       <>
         <p>{title}</p>
         <p
           style={{
             color: token.colorTextDescription,
+            fontSize: token.fontSizeSM,
           }}
         >
           {subtitle}
@@ -69,7 +86,7 @@ function CompanySearchContent() {
       }}
     >
       <Collapse defaultActiveKey={["3"]}>
-        <Panel header={headerContent("Profile Details", "Company name, listing status, phone, etc. ")} key="1">
+        <Panel header={HeaderContent("Profile Details", "Company name, listing status, phone, etc. ")} key="1">
           <Form
             {...formItemLayout}
             layout={formLayout}
@@ -97,17 +114,24 @@ function CompanySearchContent() {
           </Form>
         </Panel>
 
-        <Panel header={headerContent("Rating", "BBS score or rating")} key="2">
+        <Panel header={HeaderContent("Rating", "BBS score or rating")} key="2">
           <p>{text}</p>
         </Panel>
 
         <Panel
-          header={headerContent(
+          header={HeaderContent(
             "Location",
             "Countries, States (US) or Distance from zip codes (US and Canada) or Trading Terminal (US)"
           )}
           key="3"
         >
+          <p>Country</p>
+          <Microcopy
+            text={
+              "Select a country and add a state(s). Each country and their respective states are applied to the search independently."
+            }
+          />
+          <br></br>
           <Row wrap={false}>
             <Col flex="100px">
               <Checkbox defaultChecked onChange={onChanged}>
@@ -170,6 +194,7 @@ function CompanySearchContent() {
                 style={{ width: "100%" }}
                 onChange={handleChange}
                 mode="multiple"
+                allowClear
                 disabled={!canada}
                 options={[
                   { value: "Alberta", label: "Alberta" },
@@ -200,6 +225,7 @@ function CompanySearchContent() {
                 style={{ width: "100%" }}
                 onChange={handleChange}
                 mode="multiple"
+                allowClear
                 disabled={!mexico}
                 options={[
                   { value: "Aguascalientes", label: "Aguascalientes" },

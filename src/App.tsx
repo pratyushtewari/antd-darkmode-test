@@ -9,7 +9,7 @@ function MyApp() {
   // const { token } = theme.useToken();
   return (
     <ThemeProvider
-      themeMode={"auto"}
+      themeMode={"light"}
       theme={(appearance) => {
         if (appearance === "light") {
           // Update in light mode only
